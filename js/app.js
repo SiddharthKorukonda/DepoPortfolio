@@ -1,12 +1,11 @@
 /* ═══════════════════════════════════════════════════════
    MOHADEB HALDER — PORTFOLIO ENGINE
-   Handles routing, particles, animations & interactions
+   Routing · Particles · Animations · Interactions
    ═══════════════════════════════════════════════════════ */
 
 (function () {
   'use strict';
 
-  /* ── DOM References ── */
   const loader      = document.getElementById('loader');
   const navbar      = document.getElementById('navbar');
   const hamburger   = document.getElementById('hamburger');
@@ -20,9 +19,7 @@
 
   let loaderDone = false;
 
-  /* ═══════════════════════════════════════════════════════
-     1. LOADING SCREEN
-     ═══════════════════════════════════════════════════════ */
+  /* ── 1. LOADER ── */
   document.body.style.overflow = 'hidden';
 
   window.addEventListener('load', () => {
@@ -40,14 +37,12 @@
     }, 2200);
   });
 
-  /* ═══════════════════════════════════════════════════════
-     2. PARTICLE CONSTELLATION SYSTEM
-     ═══════════════════════════════════════════════════════ */
+  /* ── 2. PARTICLES — warm copper/amber constellation ── */
   let particles = [];
   let mouse = { x: -1000, y: -1000 };
-  const PARTICLE_COUNT = 80;
-  const CONNECTION_DIST = 140;
-  const MOUSE_RADIUS = 180;
+  const COUNT = 70;
+  const LINK_DIST = 130;
+  const MOUSE_R = 170;
 
   function resizeCanvas() {
     canvas.width  = window.innerWidth;
@@ -58,10 +53,10 @@
     constructor() {
       this.x  = Math.random() * canvas.width;
       this.y  = Math.random() * canvas.height;
-      this.vx = (Math.random() - 0.5) * 0.4;
-      this.vy = (Math.random() - 0.5) * 0.4;
-      this.r  = Math.random() * 1.8 + 0.5;
-      this.alpha = Math.random() * 0.5 + 0.2;
+      this.vx = (Math.random() - 0.5) * 0.35;
+      this.vy = (Math.random() - 0.5) * 0.35;
+      this.r  = Math.random() * 1.6 + 0.4;
+      this.alpha = Math.random() * 0.4 + 0.15;
     }
 
     update() {
@@ -74,23 +69,23 @@
       const dx = this.x - mouse.x;
       const dy = this.y - mouse.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < MOUSE_RADIUS) {
-        const force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS * 0.015;
+      if (dist < MOUSE_R) {
+        const force = (MOUSE_R - dist) / MOUSE_R * 0.012;
         this.vx += dx * force;
         this.vy += dy * force;
       }
 
       const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
-      if (speed > 1.2) {
-        this.vx *= 0.98;
-        this.vy *= 0.98;
+      if (speed > 1) {
+        this.vx *= 0.97;
+        this.vy *= 0.97;
       }
     }
 
     draw() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(0, 212, 255, ${this.alpha})`;
+      ctx.fillStyle = `rgba(200, 149, 108, ${this.alpha})`;
       ctx.fill();
     }
   }
@@ -98,104 +93,79 @@
   function initParticles() {
     resizeCanvas();
     particles = [];
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
-      particles.push(new Particle());
-    }
+    for (let i = 0; i < COUNT; i++) particles.push(new Particle());
   }
 
-  function drawConnections() {
+  function drawLinks() {
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
         const dx = particles[i].x - particles[j].x;
         const dy = particles[i].y - particles[j].y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < CONNECTION_DIST) {
-          const alpha = (1 - dist / CONNECTION_DIST) * 0.15;
+        if (dist < LINK_DIST) {
+          const alpha = (1 - dist / LINK_DIST) * 0.1;
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(0, 212, 255, ${alpha})`;
-          ctx.lineWidth = 0.6;
+          ctx.strokeStyle = `rgba(200, 149, 108, ${alpha})`;
+          ctx.lineWidth = 0.5;
           ctx.stroke();
         }
       }
     }
   }
 
-  function animateParticles() {
+  function tick() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     particles.forEach(p => { p.update(); p.draw(); });
-    drawConnections();
-    requestAnimationFrame(animateParticles);
+    drawLinks();
+    requestAnimationFrame(tick);
   }
 
   window.addEventListener('resize', resizeCanvas);
-
-  document.addEventListener('mousemove', (e) => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-  });
-
-  document.addEventListener('mouseleave', () => {
-    mouse.x = -1000;
-    mouse.y = -1000;
-  });
+  document.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+  document.addEventListener('mouseleave', () => { mouse.x = -1000; mouse.y = -1000; });
 
   initParticles();
-  animateParticles();
+  tick();
 
-  /* ═══════════════════════════════════════════════════════
-     3. HASH-BASED ROUTER
-     ═══════════════════════════════════════════════════════ */
+  /* ── 3. ROUTER ── */
   const validPages = [
     'home', 'projects', 'project-1', 'project-2', 'project-3', 'resume', 'contact'
   ];
 
-  function getPageFromHash() {
-    const hash = window.location.hash.replace('#', '') || 'home';
-    return validPages.includes(hash) ? hash : 'home';
+  function getPage() {
+    const h = window.location.hash.replace('#', '') || 'home';
+    return validPages.includes(h) ? h : 'home';
   }
 
-  function navigateTo(pageId) {
-    pages.forEach(page => {
-      page.classList.remove('active', 'visible');
-    });
+  function navigateTo(id) {
+    pages.forEach(p => p.classList.remove('active', 'visible'));
 
-    const target = document.getElementById('page-' + pageId);
+    const target = document.getElementById('page-' + id);
     if (!target) return;
-
     target.classList.add('active');
 
     if (loaderDone) {
       requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          target.classList.add('visible');
-        });
+        requestAnimationFrame(() => target.classList.add('visible'));
       });
       triggerPageAnimations(target);
     }
 
-    updateNavActive(pageId);
+    updateNav(id);
     window.scrollTo({ top: 0, behavior: 'instant' });
   }
 
-  function updateNavActive(pageId) {
-    const baseId = pageId.startsWith('project-') ? 'projects' : pageId;
-    navLinks.forEach(link => {
-      link.classList.toggle('active', link.dataset.page === baseId);
-    });
+  function updateNav(id) {
+    const base = id.startsWith('project-') ? 'projects' : id;
+    navLinks.forEach(l => l.classList.toggle('active', l.dataset.page === base));
   }
 
-  window.addEventListener('hashchange', () => {
-    navigateTo(getPageFromHash());
-    closeMobileMenu();
-  });
+  window.addEventListener('hashchange', () => { navigateTo(getPage()); closeMobile(); });
+  navigateTo(getPage());
 
-  navigateTo(getPageFromHash());
-
-  /* ═══════════════════════════════════════════════════════
-     4. NAVIGATION
-     ═══════════════════════════════════════════════════════ */
+  /* ── 4. NAV SCROLL & MOBILE ── */
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 30);
   });
@@ -205,103 +175,60 @@
     mobileMenu.classList.toggle('open');
   });
 
-  function closeMobileMenu() {
+  function closeMobile() {
     hamburger.classList.remove('open');
     mobileMenu.classList.remove('open');
   }
 
-  mobileLinks.forEach(link => {
-    link.addEventListener('click', closeMobileMenu);
-  });
+  mobileLinks.forEach(l => l.addEventListener('click', closeMobile));
 
-  document.addEventListener('click', (e) => {
+  document.addEventListener('click', e => {
     if (mobileMenu.classList.contains('open') &&
         !mobileMenu.contains(e.target) &&
-        !hamburger.contains(e.target)) {
-      closeMobileMenu();
-    }
+        !hamburger.contains(e.target)) closeMobile();
   });
 
-  /* ═══════════════════════════════════════════════════════
-     5. SCROLL / INTERSECTION ANIMATIONS
-     ═══════════════════════════════════════════════════════ */
+  /* ── 5. ANIMATIONS ── */
   function initAnimations() {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in-view');
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-    );
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-    document.querySelectorAll('.anim-fade-up').forEach(el => {
-      observer.observe(el);
-    });
+    document.querySelectorAll('.anim-fade-up').forEach(el => obs.observe(el));
   }
 
   function triggerPageAnimations(page) {
-    const elements = page.querySelectorAll('.anim-fade-up');
-    elements.forEach(el => el.classList.remove('in-view'));
-
+    const els = page.querySelectorAll('.anim-fade-up');
+    els.forEach(el => el.classList.remove('in-view'));
     setTimeout(() => {
-      elements.forEach((el, i) => {
-        setTimeout(() => {
-          el.classList.add('in-view');
-        }, i * 100);
-      });
-    }, 250);
+      els.forEach((el, i) => setTimeout(() => el.classList.add('in-view'), i * 90));
+    }, 200);
   }
 
-  /* ═══════════════════════════════════════════════════════
-     6. 3D TILT EFFECT ON PROJECT CARDS
-     ═══════════════════════════════════════════════════════ */
+  /* ── 6. TILT ── */
   document.querySelectorAll('[data-tilt]').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rotateX = (y - centerY) / centerY * -5;
-      const rotateY = (x - centerX) / centerX * 5;
-
-      card.style.transform =
-        `translateY(-6px) perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const rx = (e.clientY - r.top - r.height / 2) / (r.height / 2) * -4;
+      const ry = (e.clientX - r.left - r.width / 2) / (r.width / 2) * 4;
+      card.style.transform = `translateY(-5px) perspective(700px) rotateX(${rx}deg) rotateY(${ry}deg)`;
     });
-
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
-    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
   });
 
-  /* ═══════════════════════════════════════════════════════
-     7. CONTACT FORM
-     ═══════════════════════════════════════════════════════ */
+  /* ── 7. CONTACT FORM ── */
   if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', e => {
       e.preventDefault();
-
-      const btn = contactForm.querySelector('.btn-submit span');
-      const original = btn.textContent;
-      btn.textContent = 'Message Sent!';
+      const span = contactForm.querySelector('.btn-fill span');
+      const orig = span.textContent;
+      span.textContent = 'Message Sent!';
       contactForm.reset();
-
-      setTimeout(() => {
-        btn.textContent = original;
-      }, 3000);
+      setTimeout(() => { span.textContent = orig; }, 3000);
     });
   }
 
-  /* ═══════════════════════════════════════════════════════
-     8. KEYBOARD NAVIGATION
-     ═══════════════════════════════════════════════════════ */
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closeMobileMenu();
-    }
-  });
+  /* ── 8. KEYBOARD ── */
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobile(); });
 
 })();
