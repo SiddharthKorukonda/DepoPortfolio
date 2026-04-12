@@ -212,13 +212,12 @@
 
   /* ── 5b. Project card videos — tighter loop (skip trailing gap before repeat) */
   document.querySelectorAll('.card-thumb-video').forEach(video => {
-    video.addEventListener('timeupdate', function () {
-      const d = this.duration;
-      if (!d || !isFinite(d) || this.currentTime < 0.05) return;
-      const tail = Math.min(0.85, Math.max(0.1, d * 0.18));
-      if (d - this.currentTime < tail) {
-        this.currentTime = 0;
-      }
+    const REPEAT_GAP_MS = 500;
+    video.addEventListener('ended', () => {
+      setTimeout(() => {
+        video.currentTime = 0;
+        video.play().catch(() => {});
+      }, REPEAT_GAP_MS);
     });
   });
 
