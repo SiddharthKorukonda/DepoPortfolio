@@ -635,6 +635,57 @@ input, textarea { font-family: inherit; }
 }
 .detail-block p:last-of-type { margin-bottom: 0; }
 
+/* Project 1 — Motion Simulation: half text / half image */
+.motion-split {
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  gap: clamp(36px, 5.5vw, 64px);
+  align-items: start;
+}
+
+.motion-split__text p {
+  margin-bottom: 0;
+  font-size: clamp(1.02rem, 1.05vw + 0.9rem, 1.14rem);
+  line-height: 1.82;
+}
+
+.motion-split__media {
+  margin: 0;
+}
+
+.motion-split__frame {
+  background: linear-gradient(165deg, #f2efe8 0%, #e9e4db 55%, #e3ddd3 100%);
+  border-radius: 14px;
+  border: 1px solid rgba(200, 149, 108, 0.22);
+  padding: clamp(8px, 1.2vw, 12px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 20px 50px rgba(0, 0, 0, 0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.motion-split__frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(1100px, 92vh);
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+@media (max-width: 880px) {
+  .motion-split {
+    grid-template-columns: 1fr;
+  }
+
+  .motion-split__frame img {
+    max-height: min(900px, 88vh);
+  }
+}
+
 .media-row {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
