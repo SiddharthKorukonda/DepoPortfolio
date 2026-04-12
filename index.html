@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohadeb Halder | Engineering Portfolio</title>
+  <meta name="description" content="Mohadeb Halder — Mechanical Engineering portfolio with a concentration in Aerospace. Boston University.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Exo+2:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ═══════════════ LOADING SCREEN ═══════════════ -->
+  <div id="loader">
+    <div class="loader-inner">
+      <div class="loader-hex">
+        <svg viewBox="0 0 120 120" class="hex-svg">
+          <polygon class="hex-outline" points="60,5 110,30 110,90 60,115 10,90 10,30"/>
+          <polygon class="hex-inner" points="60,20 95,38 95,82 60,100 25,82 25,38"/>
+        </svg>
+        <div class="loader-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+      </div>
+      <div class="loader-text">
+        <span class="loader-label">INITIALIZING SYSTEMS</span>
+        <span class="loader-dots"><span>.</span><span>.</span><span>.</span></span>
+      </div>
+      <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ PARTICLE CANVAS ═══════════════ -->
+  <canvas id="particles"></canvas>
+
+  <!-- ═══════════════ NAVIGATION ═══════════════ -->
+  <nav id="navbar">
+    <a href="#home" class="nav-home" aria-label="Home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+        <polyline points="9 22 9 12 15 12 15 22"/>
+      </svg>
+    </a>
+    <span class="nav-title">Mohadeb Halder Portfolio</span>
+    <div class="nav-links">
+      <a href="#projects" class="nav-link" data-page="projects">Projects</a>
+      <a href="#resume" class="nav-link" data-page="resume">Resume</a>
+      <a href="#contact" class="nav-link" data-page="contact">Contact</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ═══════════════ MOBILE MENU ═══════════════ -->
+  <div id="mobile-menu" class="mobile-menu">
+    <a href="#home" class="mobile-link">Home</a>
+    <a href="#projects" class="mobile-link">Projects</a>
+    <a href="#resume" class="mobile-link">Resume</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+  </div>
+
+  <!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+  <main id="main-content">
+
+    <!-- ──── HOME PAGE ──── -->
+    <section id="page-home" class="page active">
+      <div class="home-container">
+        <div class="home-grid">
+          <div class="home-text">
+            <div class="home-tag anim-fade-up">
+              <span class="tag-bracket">[</span>
+              <span class="tag-text">MECHANICAL ENGINEERING &bull; AEROSPACE</span>
+              <span class="tag-bracket">]</span>
+            </div>
+            <h1 class="home-name anim-fade-up anim-delay-1">
+              <span class="name-first">Mohadeb</span>
+              <span class="name-last">Halder</span>
+            </h1>
+            <div class="home-divider anim-fade-up anim-delay-2">
+              <span class="divider-line"></span>
+              <span class="divider-diamond"></span>
+              <span class="divider-line"></span>
+            </div>
+            <p class="home-desc anim-fade-up anim-delay-3">
+              I am studying <strong>Mechanical Engineering</strong> with a concentration in <strong>Aerospace</strong>.
+            </p>
+            <p class="home-school anim-fade-up anim-delay-4">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-inline">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                <path d="M6 12v5c0 2 6 3 6 3s6-1 6-3v-5"/>
+              </svg>
+              Boston University
+            </p>
+            <div class="home-cta anim-fade-up anim-delay-5">
+              <a href="#projects" class="btn btn-primary">
+                <span>View Projects</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#contact" class="btn btn-outline">
+                <span>Get In Touch</span>
+              </a>
+            </div>
+          </div>
+          <div class="home-visual anim-fade-up anim-delay-2">
+            <div class="profile-frame">
+              <div class="profile-ring"></div>
+              <div class="profile-ring ring-2"></div>
+              <div class="profile-img-wrap">
+                <div class="profile-placeholder">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                  </svg>
+                  <span>Photo Coming Soon</span>
+                </div>
+                <!-- Replace placeholder with: <img src="assets/images/profile.jpg" alt="Mohadeb Halder"> -->
+              </div>
+              <div class="profile-hud-tl"></div>
+              <div class="profile-hud-tr"></div>
+              <div class="profile-hud-bl"></div>
+              <div class="profile-hud-br"></div>
+            </div>
+            <div class="home-stats">
+              <div class="stat-item">
+                <span class="stat-value">3+</span>
+                <span class="stat-label">Projects</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-value">ME</span>
+                <span class="stat-label">Major</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-value">BU</span>
+                <span class="stat-label">School</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-indicator">
+        <span>EXPLORE</span>
+        <div class="scroll-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──── PROJECTS PAGE ──── -->
+    <section id="page-projects" class="page">
+      <div class="section-container">
+        <div class="section-header anim-fade-up">
+          <span class="section-tag">// ENGINEERING WORK</span>
+          <h2 class="section-title">Projects</h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="projects-grid">
+
+          <a href="#project-1" class="project-card anim-fade-up" data-tilt>
+            <div class="card-img">
+              <div class="card-img-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              </div>
+              <div class="card-overlay">
+                <span class="card-overlay-text">View Project</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+            <div class="card-info">
+              <h3 class="card-title">Four Bar Mechanism</h3>
+              <p class="card-desc">Compact four-bar linkage mechanism design &amp; motion simulation</p>
+            </div>
+            <div class="card-hud-tl"></div>
+            <div class="card-hud-tr"></div>
+            <div class="card-hud-bl"></div>
+            <div class="card-hud-br"></div>
+          </a>
+
+          <a href="#project-2" class="project-card anim-fade-up anim-delay-1" data-tilt>
+            <div class="card-img">
+              <div class="card-img-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              </div>
+              <div class="card-overlay">
+                <span class="card-overlay-text">View Project</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+            <div class="card-info">
+              <h3 class="card-title">Electromechanical Trash Can</h3>
+              <p class="card-desc">Linkage-driven tray mechanism for automated waste disposal</p>
+            </div>
+            <div class="card-hud-tl"></div>
+            <div class="card-hud-tr"></div>
+            <div class="card-hud-bl"></div>
+            <div class="card-hud-br"></div>
+          </a>
+
+          <a href="#project-3" class="project-card anim-fade-up anim-delay-2" data-tilt>
+            <div class="card-img">
+              <div class="card-img-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              </div>
+              <div class="card-overlay">
+                <span class="card-overlay-text">View Project</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+            <div class="card-info">
+              <h3 class="card-title">Electromechanical Prototype Car</h3>
+              <p class="card-desc">Arduino-controlled cart with dynamic motor speed profiling</p>
+            </div>
+            <div class="card-hud-tl"></div>
+            <div class="card-hud-tr"></div>
+            <div class="card-hud-bl"></div>
+            <div class="card-hud-br"></div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ──── PROJECT DETAIL: Four Bar Mechanism ──── -->
+    <section id="page-project-1" class="page project-detail">
+      <div class="section-container">
+        <a href="#projects" class="back-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Back to Projects</span>
+        </a>
+        <div class="detail-header anim-fade-up">
+          <span class="section-tag">// PROJECT 01</span>
+          <h2 class="section-title">Four Bar Mechanism</h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="detail-content">
+          <div class="detail-section anim-fade-up">
+            <h3 class="detail-subtitle">
+              <span class="subtitle-marker"></span>Design Overview
+            </h3>
+            <p>Designed and modeled a compact four-bar linkage mechanism to convert rotary motion into controlled planar movement. The assembly was created with fully constrained parts and optimized for smooth, repeatable motion, demonstrating a practical mechanical solution for motion transfer applications.</p>
+            <div class="detail-media-grid">
+              <div class="media-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Mechanism Design Image</span>
+              </div>
+              <div class="media-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Assembly View</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-section anim-fade-up">
+            <h3 class="detail-subtitle">
+              <span class="subtitle-marker"></span>Motion Simulation
+            </h3>
+            <p>Used SolidWorks Motion to simulate the mechanism under a driven input and evaluate how it moves under real-world conditions. Motion studies provided position, speed, and load trends over time, helping identify peak motor demand and force locations while validating the overall performance of the design.</p>
+            <div class="detail-media-grid">
+              <div class="media-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Motion Study Results</span>
+              </div>
+              <div class="media-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Load Analysis</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──── PROJECT DETAIL: Electromechanical Trash Can ──── -->
+    <section id="page-project-2" class="page project-detail">
+      <div class="section-container">
+        <a href="#projects" class="back-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Back to Projects</span>
+        </a>
+        <div class="detail-header anim-fade-up">
+          <span class="section-tag">// PROJECT 02</span>
+          <h2 class="section-title">Electromechanical Trash Can</h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="detail-content">
+          <div class="detail-section anim-fade-up">
+            <h3 class="detail-subtitle">
+              <span class="subtitle-marker"></span>Overview
+            </h3>
+            <p>This project focused on designing a linkage mechanism that moves a trash-deposit tray from its loading position to a rear dumping position while keeping the entire motion within the container's boundaries. Trash is first placed on the top tray, and the mechanism then retracts the tray and directs it toward an opening at the back of the container.</p>
+            <p>One major design requirement was that all pivot points had to be attached to the container's side walls, while also ensuring the tray followed a precise path between its two end positions. Using geometric constraints and linkage analysis, suitable pivot locations and link dimensions were determined to provide smooth and dependable motion. The completed design satisfies all functional requirements and keeps the tray fully enclosed during operation.</p>
+            <div class="detail-media-grid">
+              <div class="media-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Mechanism Overview</span>
+              </div>
+              <div class="media-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Linkage Design</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-section anim-fade-up">
+            <h3 class="detail-subtitle">
+              <span class="subtitle-marker"></span>Theory
+            </h3>
+            <p>By applying vector loop equations and geometric constraints, a four-bar linkage was determined to be the simplest mechanism capable of achieving the required motion while remaining completely enclosed within the container. Mathematical models and plotted solutions were used to assess different link length ratios and pivot locations.</p>
+            <p>Through iterative analysis, an optimal configuration was selected that delivers the necessary angular rotation and translational movement of the tray while ensuring all links remain anchored to the container's side walls. This analytical method provides a generalized framework for designing motion-controlled tray mechanisms in confined spaces, serving as a predictive approach for defining linkage geometry under strict spatial constraints.</p>
+            <div class="detail-media-grid">
+              <div class="media-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Vector Loop Analysis</span>
+              </div>
+              <div class="media-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Plotted Solutions</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-section anim-fade-up">
+            <h3 class="detail-subtitle">
+              <span class="subtitle-marker"></span>Motion Study
+            </h3>
+            <p>The project successfully produced a functional linkage mechanism that moves the tray from its loading position to the rear opening while fully complying with the container's spatial constraints. By utilizing kinematic equations, vector loop analysis, and plotted motion trajectories, the tray's position and orientation were accurately controlled throughout its motion.</p>
+            <p>The defined initial and final positions established the limits of movement, and the final linkage design was validated by tracing the tray's path. Overall, this project demonstrates how mathematical modeling and mechanism theory can be effectively applied to solve practical engineering problems in compact mechanical systems.</p>
+            <div class="detail-media-grid">
+              <div class="media-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Motion Trajectories</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──── PROJECT DETAIL: Electromechanical Prototype Car ──── -->
+    <section id="page-project-3" class="page project-detail">
+      <div class="section-container">
+        <a href="#projects" class="back-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Back to Projects</span>
+        </a>
+        <div class="detail-header anim-fade-up">
+          <span class="section-tag">// PROJECT 03</span>
+          <h2 class="section-title">Electromechanical Prototype Car</h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="detail-content">
+          <div class="detail-section anim-fade-up">
+            <h3 class="detail-subtitle">
+              <span class="subtitle-marker"></span>Abstract
+            </h3>
+            <p>This project applied principles of motor speed control and multibody dynamics to develop a system capable of transporting a 1-foot vertical bar between two points separated by up to 10 feet without allowing the bar to tip over. Individually, I used SolidWorks simulations to evaluate multiple motion concepts, analyze stability, and determine an optimal timing strategy.</p>
+            <p>As part of a team, we built a fully functional prototype using a 12V gear motor, an Arduino Uno, and custom 3D-printed and foam-board components. Through iterative testing, both the mechanical design and control algorithm were refined to maximize speed while maintaining stability. The project concluded with a live in-class competition where each team's prototype demonstrated the motion task. This experience strengthened my skills in simulation, control systems, rapid prototyping, and collaborative engineering design.</p>
+            <div class="detail-media-grid">
+              <div class="media-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Prototype Overview</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-section anim-fade-up">
+            <h3 class="detail-subtitle">
+              <span class="subtitle-marker"></span>Theory &mdash; Calculations &amp; SolidWorks
+            </h3>
+            <p>For this project, I developed a complete SolidWorks motion simulation of the cart system to validate the calculations underlying the design. The cart was fully modeled with appropriate forces and constraints, and dynamic simulations were conducted to evaluate acceleration, stability, and overall motion behavior.</p>
+            <p>By comparing simulation results with theoretical predictions, I confirmed that the system performed as intended and identified minor adjustments to improve performance. This process demonstrated the value of virtual testing in verifying design decisions prior to physical prototyping and further strengthened my skills in motion analysis and engineering problem-solving.</p>
+            <div class="detail-media-grid">
+              <div class="media-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>SolidWorks Simulation</span>
+              </div>
+              <div class="media-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Theoretical Calculations</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-section anim-fade-up">
+            <h3 class="detail-subtitle">
+              <span class="subtitle-marker"></span>Results &mdash; Data Analysis
+            </h3>
+            <p>The motion study confirmed the design's accuracy, validated the calculations, and gave valuable insight into the cart's behavior before building a prototype.</p>
+            <p>I generated a reaction force-vs.-time plot at the cart's support to show how loads changed during acceleration, steady motion, and deceleration. Comparing the measured profile to theoretical predictions confirmed the reactions stayed within acceptable limits and the system remained mechanically stable.</p>
+            <div class="detail-media-grid">
+              <div class="media-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Reaction Force Plot</span>
+              </div>
+              <div class="media-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Data Analysis Charts</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-section anim-fade-up">
+            <h3 class="detail-subtitle">
+              <span class="subtitle-marker"></span>Assembly of Cart
+            </h3>
+            <p>In our design, the side walls also functioned as axial supports for the rods, removing the need for separate mounting components on the cart. To improve stability, we intentionally lowered the center of mass by positioning the base just a few millimeters above the ground based on initial intuition.</p>
+            <p>During testing, we observed traction issues, as the 3D-printed wheels tended to slip rather than maintain grip on the surface. To resolve this, we added a rubber lining around each wheel's circumference. This adjustment eliminated skidding, reduced wheel wobble, and improved overall traction. The slight increase in diameter at the wheel center also helped maintain consistent ground contact despite minor misalignment. As a result, the cart was able to travel in a straight, stable path without drifting.</p>
+            <div class="detail-media-grid">
+              <div class="media-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Cart Assembly Photo</span>
+              </div>
+              <div class="media-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Wheel Modification</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-section anim-fade-up">
+            <h3 class="detail-subtitle">
+              <span class="subtitle-marker"></span>Arduino Control System
+            </h3>
+            <p>This Arduino program controls a DC motor to move back and forth over a defined travel distance using a time-based motion profile for smooth speed regulation. The user specifies the travel distance, target maximum speed, and acceleration, and the code determines whether the motion profile is trapezoidal (accelerate &rarr; cruise &rarr; decelerate) or triangular (accelerate &rarr; decelerate when the distance is too short to reach peak speed).</p>
+            <p>The program then converts the desired speed into a PWM signal using a calibration factor and ramps the PWM from a minimum threshold (to overcome static friction) up to a calculated peak value. If required, it maintains the peak speed during a cruise phase before symmetrically ramping down to a stop. The sequence is executed first in the forward direction, followed by a pause, and then repeated in reverse before completing the cycle. An encoder interrupt continuously counts pulses in the background, with an optional speed calculation function available to support performance monitoring and feedback verification.</p>
+            <div class="detail-media-grid">
+              <div class="media-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Arduino Circuit</span>
+              </div>
+              <div class="media-placeholder video-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <span>Demo Video</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──── RESUME PAGE ──── -->
+    <section id="page-resume" class="page">
+      <div class="section-container">
+        <div class="section-header anim-fade-up">
+          <span class="section-tag">// PROFESSIONAL PROFILE</span>
+          <h2 class="section-title">Resume</h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="resume-actions anim-fade-up anim-delay-1">
+          <a href="assets/resume/resume.pdf" download class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Download Resume</span>
+          </a>
+          <a href="assets/resume/resume.pdf" target="_blank" rel="noopener" class="btn btn-outline">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            <span>View in New Tab</span>
+          </a>
+        </div>
+        <div class="resume-viewer anim-fade-up anim-delay-2">
+          <div class="resume-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+            <span>Resume PDF will be displayed here</span>
+            <p class="resume-note">Add your resume PDF to <code>assets/resume/resume.pdf</code></p>
+          </div>
+          <!-- When resume.pdf is added, uncomment: -->
+          <!-- <iframe src="assets/resume/resume.pdf" class="resume-frame" title="Resume"></iframe> -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ──── CONTACT PAGE ──── -->
+    <section id="page-contact" class="page">
+      <div class="section-container">
+        <div class="section-header anim-fade-up">
+          <span class="section-tag">// GET IN TOUCH</span>
+          <h2 class="section-title">Contact</h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-form-wrap anim-fade-up anim-delay-1">
+            <form id="contact-form" class="contact-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">First Name</label>
+                  <input type="text" id="firstName" name="firstName" required autocomplete="given-name">
+                  <span class="input-glow"></span>
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Last Name</label>
+                  <input type="text" id="lastName" name="lastName" required autocomplete="family-name">
+                  <span class="input-glow"></span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required autocomplete="email">
+                <span class="input-glow"></span>
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                <span class="input-glow"></span>
+              </div>
+              <button type="submit" class="btn btn-primary btn-submit">
+                <span>Send Message</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+            </form>
+          </div>
+          <div class="contact-social-wrap anim-fade-up anim-delay-2">
+            <h3 class="social-heading">Connect With Me</h3>
+            <div class="social-icons">
+              <a href="#" target="_blank" rel="noopener" class="social-circle" aria-label="LinkedIn" data-tooltip="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </a>
+              <a href="#" class="social-circle" aria-label="Email" data-tooltip="Email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </a>
+              <a href="#" target="_blank" rel="noopener" class="social-circle" aria-label="Instagram" data-tooltip="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </a>
+              <a href="#" target="_blank" rel="noopener" class="social-circle" aria-label="GitHub" data-tooltip="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              </a>
+            </div>
+            <p class="social-note">Links will be updated soon</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer id="footer">
+    <span class="copyright">&copy; Siddharth Korukonda 2026</span>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
