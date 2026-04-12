@@ -40,10 +40,10 @@
   /* ── 2. PARTICLES — warm copper/amber constellation ── */
   let particles = [];
   let mouse = { x: -1000, y: -1000 };
-  const COUNT = 500;
-  const LINK_DIST = 95;
+  const COUNT = 250;
+  const LINK_DIST = 116;
   const LINK_DIST_SQ = LINK_DIST * LINK_DIST;
-  const MOUSE_R = 170;
+  const MOUSE_R = 180;
   const MOUSE_R_SQ = MOUSE_R * MOUSE_R;
 
   function resizeCanvas() {
@@ -73,7 +73,7 @@
       const distSq = dx * dx + dy * dy;
       if (distSq < MOUSE_R_SQ && distSq > 0) {
         const dist = Math.sqrt(distSq);
-        const force = (MOUSE_R - dist) / MOUSE_R * 0.012;
+        const force = (MOUSE_R - dist) / MOUSE_R * 0.028;
         this.vx += dx * force;
         this.vy += dy * force;
       }
@@ -100,52 +100,22 @@
   }
 
   function drawLinks() {
-    const w = canvas.width;
-    const h = canvas.height;
-    const cell = LINK_DIST;
-    const cols = Math.max(1, Math.ceil(w / cell));
-    const rows = Math.max(1, Math.ceil(h / cell));
-    const gridSize = cols * rows;
-    const grid = new Array(gridSize);
-    for (let g = 0; g < gridSize; g++) grid[g] = [];
-
-    for (let i = 0; i < particles.length; i++) {
-      const p = particles[i];
-      const cx = Math.min(Math.floor(p.x / cell), cols - 1);
-      const cy = Math.min(Math.floor(p.y / cell), rows - 1);
-      grid[cy * cols + cx].push(i);
-    }
-
     for (let i = 0; i < particles.length; i++) {
       const pi = particles[i];
-      const cx = Math.min(Math.floor(pi.x / cell), cols - 1);
-      const cy = Math.min(Math.floor(pi.y / cell), rows - 1);
-
-      for (let oy = -1; oy <= 1; oy++) {
-        const ny = cy + oy;
-        if (ny < 0 || ny >= rows) continue;
-        for (let ox = -1; ox <= 1; ox++) {
-          const nx = cx + ox;
-          if (nx < 0 || nx >= cols) continue;
-          const cellList = grid[ny * cols + nx];
-          for (let k = 0; k < cellList.length; k++) {
-            const j = cellList[k];
-            if (j <= i) continue;
-            const pj = particles[j];
-            const dx = pi.x - pj.x;
-            const dy = pi.y - pj.y;
-            const dSq = dx * dx + dy * dy;
-            if (dSq >= LINK_DIST_SQ) continue;
-            const dist = Math.sqrt(dSq);
-            const alpha = (1 - dist / LINK_DIST) * 0.09;
-            ctx.beginPath();
-            ctx.moveTo(pi.x, pi.y);
-            ctx.lineTo(pj.x, pj.y);
-            ctx.strokeStyle = `rgba(200, 149, 108, ${alpha})`;
-            ctx.lineWidth = 0.45;
-            ctx.stroke();
-          }
-        }
+      for (let j = i + 1; j < particles.length; j++) {
+        const pj = particles[j];
+        const dx = pi.x - pj.x;
+        const dy = pi.y - pj.y;
+        const dSq = dx * dx + dy * dy;
+        if (dSq >= LINK_DIST_SQ) continue;
+        const dist = Math.sqrt(dSq);
+        const alpha = (1 - dist / LINK_DIST) * 0.1;
+        ctx.beginPath();
+        ctx.moveTo(pi.x, pi.y);
+        ctx.lineTo(pj.x, pj.y);
+        ctx.strokeStyle = `rgba(200, 149, 108, ${alpha})`;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
       }
     }
   }
