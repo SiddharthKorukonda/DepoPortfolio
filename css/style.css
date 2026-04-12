@@ -700,6 +700,100 @@ input, textarea { font-family: inherit; }
   font-size: clamp(0.92rem, 0.85vw + 0.78rem, 1.02rem);
 }
 
+/* Project 03 — Theory: left half = text + notebook; right half = CAD (height = text + notebook) */
+.theory-sw-split {
+  --theory-sw-gap: clamp(28px, 4vw, 48px);
+  position: relative;
+  padding-right: calc(50% + var(--theory-sw-gap) / 2);
+}
+
+.theory-sw-split__left {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 2vw, 22px);
+  min-width: 0;
+  max-width: 100%;
+}
+
+.theory-sw-split__cad-pane {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: calc(50% - var(--theory-sw-gap) / 2);
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.detail-block--theory-sw .theory-sw-split__frame.motion-split__frame {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.detail-block--theory-sw .theory-sw-split__frame img {
+  border-radius: 0;
+}
+
+.theory-sw-split__frame--cad {
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+}
+
+#page-project-3 .detail-block--theory-sw .theory-sw-split__text p {
+  font-size: clamp(0.92rem, 0.85vw + 0.78rem, 1.02rem);
+  line-height: 1.75;
+  margin-bottom: 12px;
+  color: var(--text-secondary);
+}
+
+#page-project-3 .detail-block--theory-sw .theory-sw-split__text p:last-child {
+  margin-bottom: 0;
+}
+
+.detail-block--theory-sw .theory-sw-split__frame--notebook img {
+  max-height: none;
+  height: auto;
+  width: 100%;
+}
+
+.detail-block--theory-sw .theory-sw-split__frame--cad img {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  object-fit: contain;
+  object-position: center;
+}
+
+@media (max-width: 880px) {
+  .theory-sw-split {
+    padding-right: 0;
+  }
+
+  .theory-sw-split__cad-pane {
+    position: static;
+    width: 100%;
+    margin-top: clamp(20px, 3vw, 28px);
+    min-height: min(420px, 55vh);
+  }
+
+  .theory-sw-split__frame--cad {
+    flex: 0 1 auto;
+    height: auto;
+    min-height: min(380px, 50vh);
+  }
+
+  .detail-block--theory-sw .theory-sw-split__frame--cad img {
+    height: auto;
+    max-height: min(720px, 78vh);
+  }
+}
+
 .motion-split__media {
   margin: 0;
   min-width: 0;
