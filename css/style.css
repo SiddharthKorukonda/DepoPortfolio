@@ -682,12 +682,18 @@ input, textarea { font-family: inherit; }
 }
 
 .motion-split__frame--video {
-  background: #0d0c10;
-  min-height: min(520px, 56vh);
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  min-height: 0;
+  border-radius: 0;
+  overflow: visible;
 }
 
 .motion-split__frame--video video {
-  background: #000;
+  background: transparent;
+  border-radius: 0;
 }
 
 @media (max-width: 880px) {
@@ -698,10 +704,6 @@ input, textarea { font-family: inherit; }
   .motion-split__frame img,
   .motion-split__frame video {
     max-height: min(980px, 90vh);
-  }
-
-  .motion-split__frame--video {
-    min-height: min(280px, 42vh);
   }
 }
 
