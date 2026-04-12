@@ -210,7 +210,7 @@
     }, 200);
   }
 
-  /* ── 5b. Project card videos — tighter loop (skip trailing gap before repeat) */
+  /* ── 5b. Project card thumbnails — same auto-repeat gap as Four Bar card */
   document.querySelectorAll('.card-thumb-video').forEach(video => {
     const REPEAT_GAP_MS = 500;
     video.addEventListener('ended', () => {
