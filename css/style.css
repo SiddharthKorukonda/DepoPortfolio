@@ -660,6 +660,29 @@ input, textarea { font-family: inherit; }
   align-items: start;
 }
 
+/* Stacked: text on top, media below — same width as text column */
+.motion-split--stack {
+  grid-template-columns: 1fr;
+  gap: clamp(28px, 4vw, 44px);
+}
+
+.motion-split--stack .motion-split__text,
+.motion-split--stack .motion-split__media,
+.motion-split--stack .motion-split__frame {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.motion-split--stack .motion-split__frame img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  display: block;
+}
+
 .motion-split__text p {
   margin-bottom: 14px;
   font-size: clamp(1.02rem, 1.05vw + 0.9rem, 1.14rem);
