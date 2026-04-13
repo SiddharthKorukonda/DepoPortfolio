@@ -829,6 +829,20 @@ input, textarea { font-family: inherit; }
   width: 100%;
 }
 
+/* Project 03 — Abstract + Assembly: show raw images (no mat/border) */
+.detail-block--plain-media .motion-split__frame {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.detail-block--plain-media .motion-split__frame img {
+  border-radius: 0;
+}
+
 .motion-split__frame {
   width: 100%;
   background: linear-gradient(165deg, #f2efe8 0%, #e9e4db 55%, #e3ddd3 100%);
