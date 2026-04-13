@@ -694,10 +694,12 @@ input, textarea { font-family: inherit; }
   margin-bottom: 0;
 }
 
-/* Project 02 & 03 — stacked motion-split sections: slightly smaller body text */
+/* Project 02 & 03 — stacked motion-split sections + Theory subsections: same body text size */
 #page-project-2 .detail-block--motion-split .motion-split__text p,
-#page-project-3 .detail-block--motion-split .motion-split__text p {
+#page-project-3 .detail-block--motion-split .motion-split__text p,
+#page-project-3 .detail-block--theory-sw .theory-sw-sub__text p {
   font-size: clamp(0.92rem, 0.85vw + 0.78rem, 1.02rem);
+  line-height: 1.82;
 }
 
 /* Project 03 — Theory: Calculations / SolidWorks subsections, text + image pairs */
@@ -710,13 +712,12 @@ input, textarea { font-family: inherit; }
 
 .theory-sw-sub__title {
   font-family: var(--font-head);
-  font-size: clamp(1.02rem, 0.9vw + 0.88rem, 1.14rem);
+  font-size: clamp(1.12rem, 1.1vw + 0.95rem, 1.38rem);
   font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: 0.02em;
-  margin: 0 0 clamp(12px, 1.5vw, 16px);
-  padding-left: 12px;
-  border-left: 2px solid var(--copper);
+  color: #ffffff;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0 0 clamp(12px, 1.4vw, 18px);
 }
 
 .theory-sw-sub__layout {
@@ -726,9 +727,24 @@ input, textarea { font-family: inherit; }
   align-items: start;
 }
 
+.theory-sw-sub--stack .theory-sw-sub__layout {
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(18px, 2.5vw, 26px);
+}
+
+.theory-sw-sub--stack .theory-sw-sub__text {
+  min-width: 0;
+}
+
+.theory-sw-sub--stack .theory-sw-sub__figure {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  margin-inline: 0;
+  align-self: stretch;
+}
+
 #page-project-3 .detail-block--theory-sw .theory-sw-sub__text p {
-  font-size: clamp(0.92rem, 0.85vw + 0.78rem, 1.02rem);
-  line-height: 1.75;
   margin-bottom: 0;
   color: var(--text-secondary);
 }
@@ -740,11 +756,29 @@ input, textarea { font-family: inherit; }
 
 .theory-sw-sub__figure img {
   display: block;
-  width: 100%;
-  height: auto;
-  max-height: min(920px, 88vh);
   object-fit: contain;
   object-position: center top;
+}
+
+/* Calculations — portrait notebook: bounded height so it matches standard text scale */
+.detail-block--theory-sw .theory-sw-sub:not(.theory-sw-sub--stack) .theory-sw-sub__figure {
+  display: flex;
+  justify-content: center;
+}
+
+.detail-block--theory-sw .theory-sw-sub:not(.theory-sw-sub--stack) .theory-sw-sub__figure img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: min(54vh, 460px);
+}
+
+/* SolidWorks — CAD: full column width (same as text); no max-height so width is not shrunk by aspect ratio */
+.theory-sw-sub--stack .theory-sw-sub__figure img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: none;
 }
 
 @media (max-width: 880px) {
@@ -752,8 +786,8 @@ input, textarea { font-family: inherit; }
     grid-template-columns: 1fr;
   }
 
-  .theory-sw-sub__figure img {
-    max-height: min(720px, 78vh);
+  .detail-block--theory-sw .theory-sw-sub:not(.theory-sw-sub--stack) .theory-sw-sub__figure img {
+    max-height: min(62vh, 510px);
   }
 }
 
