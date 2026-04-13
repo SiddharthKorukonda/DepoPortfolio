@@ -656,7 +656,21 @@ input, textarea { font-family: inherit; }
 .detail-inline-video {
   width: 100%;
   min-width: 0;
-  margin: clamp(18px, 2.5vw, 26px) 0 clamp(6px, 1vw, 10px);
+  margin: clamp(18px, 2.5vw, 26px) 0 clamp(28px, 4vw, 44px);
+}
+
+.detail-inline-figure {
+  width: 100%;
+  min-width: 0;
+  margin: clamp(18px, 2.5vw, 28px) 0 0;
+}
+
+.detail-inline-figure img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .detail-inline-video .motion-split__frame--video {
