@@ -236,11 +236,25 @@
   if (contactForm) {
     contactForm.addEventListener('submit', e => {
       e.preventDefault();
-      const span = contactForm.querySelector('.btn-fill span');
-      const orig = span.textContent;
-      span.textContent = 'Message Sent!';
-      contactForm.reset();
-      setTimeout(() => { span.textContent = orig; }, 3000);
+      const firstName = contactForm.querySelector('#firstName')?.value.trim() || '';
+      const lastName  = contactForm.querySelector('#lastName')?.value.trim() || '';
+      const email     = contactForm.querySelector('#email')?.value.trim() || '';
+      const message   = contactForm.querySelector('#message')?.value.trim() || '';
+
+      const fullName = `${firstName} ${lastName}`.trim();
+      const subject = `Portfolio Contact${fullName ? ` - ${fullName}` : ''}`;
+      const bodyLines = [
+        `Name: ${fullName || 'N/A'}`,
+        `Email: ${email || 'N/A'}`,
+        '',
+        'Message:',
+        message || '(No message provided)'
+      ];
+      const body = bodyLines.join('\n');
+      const mailtoUrl =
+        `mailto:mohadebh@bu.edu?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+      window.location.href = mailtoUrl;
     });
   }
 
