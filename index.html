@@ -348,13 +348,20 @@
               </div>
             </div>
           </article>
-          <article class="detail-block anim-fade-up">
+          <article class="detail-block detail-block--motion-split anim-fade-up">
             <h3>Arduino Control System</h3>
-            <p>This Arduino program controls a DC motor to move back and forth over a defined travel distance using a time-based motion profile for smooth speed regulation. The user specifies the travel distance, target maximum speed, and acceleration, and the code determines whether the motion profile is trapezoidal (accelerate &rarr; cruise &rarr; decelerate) or triangular (accelerate &rarr; decelerate when the distance is too short to reach peak speed).</p>
-            <p>The program then converts the desired speed into a PWM signal using a calibration factor and ramps the PWM from a minimum threshold (to overcome static friction) up to a calculated peak value. If required, it maintains the peak speed during a cruise phase before symmetrically ramping down to a stop. The sequence is executed first in the forward direction, followed by a pause, and then repeated in reverse before completing the cycle. An encoder interrupt continuously counts pulses in the background, with an optional speed calculation function available to support performance monitoring and feedback verification.</p>
-            <div class="media-row">
-              <div class="media-slot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Arduino Circuit</span></div>
-              <div class="media-slot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg><span>Demo Video</span></div>
+            <div class="motion-split">
+              <div class="motion-split__text">
+                <p>This Arduino program controls a DC motor to move back and forth over a defined travel distance using a time-based motion profile for smooth speed regulation. The user specifies the travel distance, target maximum speed, and acceleration, and the code determines whether the motion profile is trapezoidal (accelerate &rarr; cruise &rarr; decelerate) or triangular (accelerate &rarr; decelerate when the distance is too short to reach peak speed).</p>
+                <p>The program then converts the desired speed into a PWM signal using a calibration factor and ramps the PWM from a minimum threshold (to overcome static friction) up to a calculated peak value. If required, it maintains the peak speed during a cruise phase before symmetrically ramping down to a stop. The sequence is executed first in the forward direction, followed by a pause, and then repeated in reverse before completing the cycle. An encoder interrupt continuously counts pulses in the background, with an optional speed calculation function available to support performance monitoring and feedback verification.</p>
+              </div>
+              <div class="motion-split__media">
+                <div class="motion-split__frame motion-split__frame--video">
+                  <video controls playsinline preload="metadata" aria-label="Demo video of the Arduino-controlled prototype cart.">
+                    <source src="assets/video/project3-arduino-demo.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
             </div>
           </article>
         </div>
