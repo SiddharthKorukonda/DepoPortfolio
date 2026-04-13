@@ -1033,22 +1033,27 @@ input, textarea { font-family: inherit; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 28px;
+  gap: 18px;
   padding-top: 16px;
 }
 
-.contact-social h3 {
+.contact-social-heading {
   font-family: var(--font-head);
   font-size: 1rem;
   font-weight: 600;
   color: var(--text-secondary);
   letter-spacing: 0.5px;
+  margin: 0;
+  text-align: center;
+  white-space: nowrap;
 }
 
-.social-grid {
+.social-grid--contact {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, auto);
   gap: 20px;
+  justify-content: center;
+  align-items: start;
 }
 
 .social-btn {
@@ -1076,11 +1081,10 @@ input, textarea { font-family: inherit; }
 }
 .social-btn:hover svg { transform: scale(1.12); }
 
-.social-note {
-  font-size: 0.75rem;
-  color: var(--text-dim);
-  text-align: center;
-  opacity: 0.4;
+@media (max-width: 520px) {
+  .contact-social-heading {
+    white-space: normal;
+  }
 }
 
 /* ═══════════════════════════════════════════════════════
