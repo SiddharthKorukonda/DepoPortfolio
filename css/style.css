@@ -652,6 +652,24 @@ input, textarea { font-family: inherit; }
 }
 .detail-block p:last-of-type { margin-bottom: 0; }
 
+/* Full-width inline video (same track as body copy) */
+.detail-inline-video {
+  width: 100%;
+  min-width: 0;
+  margin: clamp(18px, 2.5vw, 26px) 0 clamp(6px, 1vw, 10px);
+}
+
+.detail-inline-video .motion-split__frame--video {
+  width: 100%;
+}
+
+.detail-inline-video .motion-split__frame--video video {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* Project 1 — Motion Simulation: half text / half image */
 .motion-split {
   display: grid;
