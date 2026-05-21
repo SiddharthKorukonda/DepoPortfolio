@@ -197,26 +197,33 @@
               </div>
             </div>
           </article>
-          <article class="detail-block anim-fade-up">
+          <article class="detail-block detail-block--results-analysis anim-fade-up">
             <h3>Results &mdash; Data Analysis</h3>
-            <p>Figure 1 shows the motor torque versus time at a crank speed of 20 RPM, obtained from SolidWorks Motion. The peak motor torque is 7 lb-in, occurring when the crank is oriented at a 90&deg; angle relative to the fixed link.</p>
-            <div class="detail-inline-figure">
-              <img src="assets/images/project1-results-figure1-motor-torque.png" alt="Figure 1: Motor torque versus time at 20 RPM crank speed, peak torque 7 lb-in." loading="lazy">
+            <div class="results-analysis__figures">
+              <div class="results-figure-group">
+                <p>Figure 1 shows the motor torque versus time at a crank speed of 20 RPM, obtained from SolidWorks Motion. The peak motor torque is 7 lb-in, occurring when the crank is oriented at a 90&deg; angle relative to the fixed link.</p>
+                <div class="detail-inline-figure">
+                  <img src="assets/images/project1-results-figure1-motor-torque.png" alt="Figure 1: Motor torque versus time at 20 RPM crank speed, peak torque 7 lb-in." loading="lazy">
+                </div>
+              </div>
+              <div class="results-figure-group">
+                <p>Figure 2 illustrates the reaction force at the bearing&ndash;crank interface. The peak reaction force is 3.6 lbf.</p>
+                <div class="detail-inline-figure">
+                  <img src="assets/images/project1-results-figure2-reaction-crank.png" alt="Figure 2: Reaction force at the bearing-crank interface versus time, peak 3.6 lbf." loading="lazy">
+                </div>
+              </div>
+              <div class="results-figure-group">
+                <p>Figure 3 shows the reaction force at the bearing&ndash;rocker linkage interface. The maximum reaction force is 2.1 lbf.</p>
+                <div class="detail-inline-figure">
+                  <img src="assets/images/project1-results-figure3-reaction-rocker.png" alt="Figure 3: Reaction force at the bearing-rocker linkage interface versus time, maximum 2.1 lbf." loading="lazy">
+                </div>
+              </div>
             </div>
-            <p>Figure 2 illustrates the reaction force at the bearing&ndash;crank interface. The peak reaction force is 3.6 lbf.</p>
-            <div class="detail-inline-figure">
-              <img src="assets/images/project1-results-figure2-reaction-crank.png" alt="Figure 2: Reaction force at the bearing-crank interface versus time, peak 3.6 lbf." loading="lazy">
-            </div>
-            <p>Figure 3 shows the reaction force at the bearing&ndash;rocker linkage interface. The maximum reaction force is 2.1 lbf.</p>
-            <div class="detail-inline-figure">
-              <img src="assets/images/project1-results-figure3-reaction-rocker.png" alt="Figure 3: Reaction force at the bearing-rocker linkage interface versus time, maximum 2.1 lbf." loading="lazy">
-            </div>
-            <p>The motor power is calculated using the equation:</p>
-            <p class="detail-formula">P = (T &times; N) / 63025</p>
-            <p>where <em>P</em> is motor power in horsepower, <em>T</em> is torque in lb&middot;in, and <em>N</em> is speed in RPM.</p>
-            <p>From Figure 1, the maximum motor torque is 7.1 lb&middot;in, and the desired speed is 600 RPM. Therefore:</p>
-            <p class="detail-formula">P = (7.1 &times; 600) / 63025 = 0.0676 hp</p>
-            <p>Negative torque values signify periods when the mechanism is supplying energy back to the motor. To maintain a constant rotational speed, the motor must apply an opposing (braking) torque during these intervals. This effect is primarily due to gravitational and inertial forces acting on the linkage, which can cause the system to accelerate in the direction of motion.</p>
+            <p class="results-analysis__power">The motor power is calculated using the equation:<br>
+            P = (T &times; N) / 63025<br>
+            where P is motor power in horsepower, T is torque in lb&middot;in, and N is speed in RPM. From Figure 1, the maximum motor torque is 7.1 lb&middot;in, and the desired speed is 600 RPM. Therefore:<br>
+            P = (7.1 &times; 600) / 63025 = 0.0676 hp</p>
+            <p class="results-analysis__closing">Negative torque values signify periods when the mechanism is supplying energy back to the motor. To maintain a constant rotational speed, the motor must apply an opposing (braking) torque during these intervals. This effect is primarily due to gravitational and inertial forces acting on the linkage, which can cause the system to accelerate in the direction of motion.</p>
           </article>
         </div>
       </div>

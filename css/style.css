@@ -654,12 +654,35 @@ input, textarea { font-family: inherit; }
 }
 .detail-block p:last-of-type { margin-bottom: 0; }
 
-.detail-formula {
-  font-family: var(--font-head);
-  font-size: 0.95rem;
-  color: var(--cream-dim);
-  letter-spacing: 0.02em;
-  margin-bottom: 14px;
+/* Project 01 — Results: Design Overview text size + figure grouping */
+#page-project-1 .detail-block--results-analysis p {
+  font-size: clamp(1.02rem, 1.05vw + 0.9rem, 1.14rem);
+  line-height: 1.82;
+  color: var(--text-secondary);
+}
+
+#page-project-1 .detail-block--results-analysis .results-figure-group p {
+  margin-bottom: clamp(10px, 1.2vw, 14px);
+}
+
+#page-project-1 .detail-block--results-analysis .results-figure-group .detail-inline-figure {
+  margin: 0;
+}
+
+#page-project-1 .detail-block--results-analysis .results-figure-group {
+  margin-bottom: clamp(24px, 3.5vw, 36px);
+}
+
+#page-project-1 .detail-block--results-analysis .results-figure-group:last-child {
+  margin-bottom: clamp(28px, 4vw, 40px);
+}
+
+#page-project-1 .detail-block--results-analysis .results-analysis__power {
+  margin-bottom: 18px;
+}
+
+#page-project-1 .detail-block--results-analysis .results-analysis__closing {
+  margin-bottom: 0;
 }
 
 /* Full-width inline video (same track as body copy) */
