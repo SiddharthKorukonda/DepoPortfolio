@@ -136,7 +136,7 @@
 
   /* ── 3. ROUTER ── */
   const validPages = [
-    'home', 'projects', 'project-1', 'project-2', 'project-3', 'resume', 'contact'
+    'home', 'projects', 'project-1', 'project-2', 'project-3', 'project-4', 'resume', 'contact'
   ];
 
   function getPage() {
