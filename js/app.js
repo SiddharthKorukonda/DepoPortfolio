@@ -210,6 +210,41 @@
     }, 200);
   }
 
+  /* ── 5a. Project detail sub-tabs (Four Bar: Motion Simulation / Results) */
+  document.querySelectorAll('.detail-block--subtabs').forEach(block => {
+    const tabs = block.querySelectorAll('.project-subtab');
+    const panels = block.querySelectorAll('.project-subtab-panel');
+
+    function activateTab(tab) {
+      const panelId = tab.getAttribute('aria-controls');
+      tabs.forEach(t => {
+        const active = t === tab;
+        t.classList.toggle('project-subtab--active', active);
+        t.setAttribute('aria-selected', active ? 'true' : 'false');
+        t.tabIndex = active ? 0 : -1;
+      });
+      panels.forEach(p => {
+        const active = p.id === panelId;
+        p.classList.toggle('project-subtab-panel--active', active);
+        p.hidden = !active;
+      });
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => activateTab(tab));
+      tab.addEventListener('keydown', e => {
+        if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+        e.preventDefault();
+        const i = Array.from(tabs).indexOf(tab);
+        const next = e.key === 'ArrowRight'
+          ? tabs[(i + 1) % tabs.length]
+          : tabs[(i - 1 + tabs.length) % tabs.length];
+        next.focus();
+        activateTab(next);
+      });
+    });
+  });
+
   /* ── 5b. Project card thumbnails — same auto-repeat gap as Four Bar card */
   document.querySelectorAll('.card-thumb-video').forEach(video => {
     const REPEAT_GAP_MS = 500;

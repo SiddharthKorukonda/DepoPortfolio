@@ -654,6 +654,61 @@ input, textarea { font-family: inherit; }
 }
 .detail-block p:last-of-type { margin-bottom: 0; }
 
+.detail-formula {
+  font-family: var(--font-head);
+  font-size: 0.95rem;
+  color: var(--cream-dim);
+  letter-spacing: 0.02em;
+  margin-bottom: 14px;
+}
+
+/* Project detail — horizontal sub-tabs (e.g. Motion Simulation / Results) */
+.detail-block--subtabs {
+  padding-top: clamp(20px, 3vw, 28px);
+}
+
+.project-subtabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-bottom: clamp(22px, 3vw, 32px);
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.project-subtab {
+  font-family: var(--font-head);
+  font-size: clamp(0.82rem, 0.75vw + 0.7rem, 0.95rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-dim);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: color var(--speed), border-color var(--speed), background var(--speed);
+}
+
+.project-subtab:hover {
+  color: var(--text-secondary);
+  border-color: var(--border);
+}
+
+.project-subtab--active {
+  color: var(--copper-light);
+  border-color: var(--border-hover);
+  background: var(--copper-soft);
+}
+
+.project-subtab-panels {
+  min-width: 0;
+}
+
+.project-subtab-panel[hidden] {
+  display: none;
+}
+
 /* Full-width inline video (same track as body copy) */
 .detail-inline-video {
   width: 100%;
